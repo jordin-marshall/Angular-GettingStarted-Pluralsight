@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   pageTitle: string = "Acmne Product Management"
-  title = 'apm-new';
 }
