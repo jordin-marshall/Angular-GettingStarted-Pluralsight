@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ProductService } from "./products/product.service";
-import { ProductListComponent } from './products/product-list.component';
+import { ProductListComponent } from './products/product-list/product-list.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
