@@ -8,12 +8,9 @@ import productData from "./../api/products/products.json"
 })
 
 export class ProductListComponent {
+  imageWidth: number = 50
+  imageMargin: number = 2
   pageTitle: string = 'Product List'
-  car: { type: string, model: string, year: number } = {
-    type: "Toyota",
-    model: "Corolla",
-    year: 2009
-  };
   products: {
     productId: number
     productName: string
@@ -24,4 +21,10 @@ export class ProductListComponent {
     starRating: number
     imageUrl: string
   }[] = productData
+  showImage: boolean = false
+
+
+  toggleImage(): void {
+    this.showImage = !this.showImage
+  }
 }

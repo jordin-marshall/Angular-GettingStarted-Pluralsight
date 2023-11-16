@@ -23,7 +23,9 @@
         <thead>
           <tr>
             <th scope="col">
-              <button class="btn btn-primary">Show Image</button>
+              <button
+                (click)="toggleImage()"
+                class="btn btn-primary">{{showImage ? 'Hide' : 'Show'}} Image</button>
             </th>
             <th scope="col">Product</th>
             <th scope="col">Code</th>
@@ -32,9 +34,17 @@
             <th scope="col">5 Star Rating</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
           <tr *ngFor="let product of products">
-            <td><img src="{{ product.imageUrl }}" class="img-thumbnail" height="50" width="50"></td>
+            <td>
+              <img
+                *ngIf="showImage"
+                class="img-thumbnail"
+                [src]="product.imageUrl"
+                [title]="product.productName"
+                [style.width.px]="imageWidth"
+                [style.margin.px]="imageMargin">
+            </td>
             <td>{{ product.productName }}</td>
             <td>{{ product.productCode }}</td>
             <td>{{ product.releaseDate }}</td>
