@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { IProduct } from "./product";
 import { ProductService } from "./product.service";
+import { Subscription } from "rxjs";
 
 
 @Component({
@@ -13,12 +14,14 @@ export class ProductListComponent {
 
   constructor(private productService: ProductService) {}
 
+  errorMessage: string = ''
   imageWidth: number = 50
   imageMargin: number = 2
   filteredProducts: IProduct[] = []
   pageTitle: string = 'Product List'
   products: IProduct[] = []
   showImage: boolean = false
+  sub!: Subscription
 
 
   private _listFilter: string = ''
@@ -30,7 +33,14 @@ export class ProductListComponent {
   }
 
   ngOnInit(): void {
-    this.filteredProducts = this.products = this.productService.getProducts()
+    this.sub = this.productService.getProducts().subscribe({
+      next: products => this.filteredProducts = this.products = products,
+      error: err => this.errorMessage = err
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe()
   }
 
   filterProducts(): IProduct[] {

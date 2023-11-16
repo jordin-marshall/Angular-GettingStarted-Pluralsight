@@ -1,11 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ProductService } from "./products/product.service";
+import { ProductListComponent } from './products/product-list.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [ProductService],
       declarations: [
-        AppComponent
+        AppComponent,
+        ProductListComponent,
       ],
     }).compileComponents();
   });
@@ -16,16 +22,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'apm-new'`, () => {
+  it(`should have as title 'Acmne Product Management'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('apm-new');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('apm-new app is running!');
+    expect(app.pageTitle).toEqual('Acmne Product Management');
   });
 });

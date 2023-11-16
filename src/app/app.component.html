@@ -1,4 +1,11 @@
-<div>
-  <h1>{{ pageTitle }}</h1>
-  <pm-products></pm-products>
+<nav class='navbar navbar-expand navbar-dark bg-dark border-bottom border-body' data-bs-theme="dark">
+  <a class='navbar-brand mx-3'>{{pageTitle}}</a>
+  <ul class='nav nav-pills'>
+    <li><a class='nav-link' routerLinkActive='active' routerLink='/welcome'>Home</a></li>
+    <li><a class='nav-link' routerLinkActive='active' routerLink='/products'>Product List</a></li>
+  </ul>
+</nav>
+
+<div class='container'>
+  <router-outlet></router-outlet>
 </div>
