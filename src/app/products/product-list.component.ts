@@ -26,17 +26,23 @@ export class ProductListComponent {
     this.filteredProducts = this.filterProducts()
   }
 
+  ngOnInit(): void {
+    this.filteredProducts = this.products
+  }
+
   filterProducts(): IProduct[] {
     return this.products.filter(
       (product: IProduct) => product.productName.toLocaleLowerCase().includes(this.listFilter.toLocaleLowerCase())
     )
   }
 
+  onRatingClicked(message: string): void {
+    this.pageTitle = `Product List: ${message}`
+  }
+
   toggleImage(): void {
     this.showImage = !this.showImage
   }
 
-  ngOnInit(): void {
-    this.filteredProducts = this.products
-  }
+
 }

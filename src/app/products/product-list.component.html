@@ -5,19 +5,12 @@
 
   <div class="card-body">
     <div class="row">
-      <div class="col-md-2">Filter By:</div>
+      <div class="col-md-2">Filter Products By Name:</div>
       <div class="col-md-4">
         <input
           [(ngModel)]='listFilter'
           type="text" />
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <h4>Filter By:  {{ listFilter }}</h4>
-      </div>
-
     </div>
 
     <div class="table-responsive">
@@ -51,7 +44,11 @@
             <td>{{ product.productCode | lowercase | convertToSpaces:'-' }}</td>
             <td>{{ product.releaseDate }}</td>
             <td>{{ product.price | currency: 'USD' : 'symbol' : '1.2-2' }}</td>
-            <td>{{ product.starRating }}</td>
+            <td>
+              <pm-star
+                [rating]="product.starRating"
+                (ratingClicked)="onRatingClicked($event)"></pm-star>
+            </td>
           </tr>
 
         </tbody>
