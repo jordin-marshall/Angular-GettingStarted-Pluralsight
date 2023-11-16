@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { IProduct } from "./product";
-import productData from "./../api/products/products.json"
+import { ProductService } from "./product.service";
 
 
 @Component({
@@ -10,11 +10,14 @@ import productData from "./../api/products/products.json"
 })
 
 export class ProductListComponent {
+
+  constructor(private productService: ProductService) {}
+
   imageWidth: number = 50
   imageMargin: number = 2
   filteredProducts: IProduct[] = []
   pageTitle: string = 'Product List'
-  products: IProduct[] = productData
+  products: IProduct[] = []
   showImage: boolean = false
 
 
@@ -27,7 +30,7 @@ export class ProductListComponent {
   }
 
   ngOnInit(): void {
-    this.filteredProducts = this.products
+    this.filteredProducts = this.products = this.productService.getProducts()
   }
 
   filterProducts(): IProduct[] {
