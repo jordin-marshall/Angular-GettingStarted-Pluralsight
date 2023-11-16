@@ -1,10 +1,12 @@
 import { Component } from "@angular/core";
+import { IProduct } from "./product";
 import productData from "./../api/products/products.json"
 
 
 @Component({
   selector: 'pm-products',
-  templateUrl: './product-list.component.html'
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css'],
 })
 
 export class ProductListComponent {
@@ -12,16 +14,7 @@ export class ProductListComponent {
   imageMargin: number = 2
   listFilter: string = ''
   pageTitle: string = 'Product List'
-  products: {
-    productId: number
-    productName: string
-    productCode: string
-    releaseDate: string
-    description: string
-    price: number
-    starRating: number
-    imageUrl: string
-  }[] = productData
+  products: IProduct[] = productData
   showImage: boolean = false
 
 
