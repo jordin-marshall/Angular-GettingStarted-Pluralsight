@@ -10,6 +10,7 @@ import productData from "./../api/products/products.json"
 export class ProductListComponent {
   imageWidth: number = 50
   imageMargin: number = 2
+  listFilter: string = ''
   pageTitle: string = 'Product List'
   products: {
     productId: number
