@@ -12,13 +12,31 @@ import productData from "./../api/products/products.json"
 export class ProductListComponent {
   imageWidth: number = 50
   imageMargin: number = 2
-  listFilter: string = ''
+  filteredProducts: IProduct[] = []
   pageTitle: string = 'Product List'
   products: IProduct[] = productData
   showImage: boolean = false
 
 
+  private _listFilter: string = ''
+
+  get listFilter(): string { return this._listFilter }
+  set listFilter(value: string) {
+    this._listFilter = value
+    this.filteredProducts = this.filterProducts()
+  }
+
+  filterProducts(): IProduct[] {
+    return this.products.filter(
+      (product: IProduct) => product.productName.toLocaleLowerCase().includes(this.listFilter.toLocaleLowerCase())
+    )
+  }
+
   toggleImage(): void {
     this.showImage = !this.showImage
+  }
+
+  ngOnInit(): void {
+    this.filteredProducts = this.products
   }
 }
