@@ -25,6 +25,6 @@ describe('AppComponent', () => {
   it(`should have as title 'Acmne Product Management'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.pageTitle).toEqual('Acmne Product Management');
+    expect(app.pageTitle).toEqual('Acme Product Management');
   });
 });
